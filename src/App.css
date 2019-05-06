@@ -1,33 +1,89 @@
-.App {
-  text-align: center;
+button, input, div, li, ul:focus {
+    outline: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.App {
+    text-align: center;
+    background-color: #8590a5;
+}
+
+.levelsHeader {
+    font-size: calc(10px + 2vmin);
+    color: white;
+    width: 100vw;
+    height: 50px;
+    background: #687080;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+    width: 40px;
+    height: 40px;
+    vertical-align: top;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box {
+    border: 1px solid lightgray;
+    text-align: center;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.num_button {
+    background: inherit;
+    color: white;
+}
+.num_button:hover {
+    cursor: hand;
+    background: #398ff2;
+}
+.num_button:disabled {
+    background: gray;
+    cursor: none;
+}
+.niceBtn {
+    border: none;
+    background: inherit;
+    color: white;
+    padding: 5px;
+    height: inherit;
+    vertical-align: middle;
+}
+.niceBtn:hover {
+    background: #224a81;
+}
+.border {
+    background: black;
+    z-index: 9999;
+    position: absolute;
+}
+.vertical {
+    height: 360px;
+    width: 2px;
+}
+.left {
+    margin-left: -60px;
+}
+.right {
+    margin-left: 60px;
+}
+.horizontal {
+    height: 2px;
+    width: 360px;
+}
+.top {
+    margin-top: -60px;
+}
+.bottom {
+    margin-top: 60px;
 }
