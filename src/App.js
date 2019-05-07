@@ -3,7 +3,7 @@ import './App.css';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Icon } from '@mdi/react';
-import {mdiEraserVariant} from '@mdi/js';
+import {mdiEraserVariant, mdiHelpCircle, mdiClose} from '@mdi/js';
 
 function App() {
     const [selectIndexs, setSelIndexs] = React.useState([-1, -1]);
@@ -15,6 +15,7 @@ function App() {
     const [rows, setRows] = React.useState(sudokuRender(3));
     const [isWin, setIsWin] = React.useState(false);
     const [checkErrors, setCheckErr] = React.useState(false);
+    const [showHelp, setShowHelp] = React.useState(false);
 
     function sudokuRender(level_id) {
         let rows = [];
@@ -154,45 +155,63 @@ function App() {
                             </button>
                         )
                     }
+                    <div className="spacer"/>
+                    <button className="helpBtn" onClick={() => setShowHelp(!showHelp)}>
+                        <Icon className="helpIcon" path={mdiHelpCircle}/>
+                    </button>
                 </div>
                 {
-                    isWin ?
-                        <header className="App-header">
-                            YOU WIN!
-                            <button className="niceBtn" onClick={playAgain}>PLAY AGAIN</button>
+                    showHelp ?
+                        <header className="App-header helpHeader">
+                            Надо заполнить свободные клетки цифрами от 1 до 9 так,
+                            чтобы в каждой строке, в каждом столбце и в каждом малом квадрате 3×3
+                            каждая цифра встречалась бы только один раз
+                            <button className="helpBtn" onClick={() => setShowHelp(!showHelp)}>
+                                <Icon className="helpIcon" path={mdiClose}/>
+                            </button>
                         </header>
                         :
-                        <header className="App-header">
-                            <div className={checkErrors ? 'errorTable' : 'table'}>
-                                { div }
-                            </div>
-                            <Menu
-                                id="menu"
-                                anchorEl={anchorEl}
-                                open={openMenu}
-                                onClose={() => handleClose(null)}
-                            >
-                                <div>
-                                    {
-                                        menuOptions.map(row =>
-                                            <div className="row" key={row}>
+                        <div>
+                            {
+                                isWin ?
+                                    <header className="App-header">
+                                        YOU WIN!
+                                        <button className="niceBtn" onClick={playAgain}>PLAY AGAIN</button>
+                                    </header>
+                                    :
+                                    <header className="App-header">
+                                        <div className={checkErrors ? 'errorTable' : 'table'}>
+                                            { div }
+                                        </div>
+                                        <Menu
+                                            id="menu"
+                                            anchorEl={anchorEl}
+                                            open={openMenu}
+                                            onClose={() => handleClose(null)}
+                                        >
+                                            <div>
                                                 {
-                                                    row.map(item => <MenuItem key={item}
-                                                                              onClick={() => handleClose(item)}>{item}</MenuItem>)
+                                                    menuOptions.map(row =>
+                                                        <div className="row" key={row}>
+                                                            {
+                                                                row.map(item => <MenuItem key={item}
+                                                                                          onClick={() => handleClose(item)}>{item}</MenuItem>)
+                                                            }
+                                                        </div>
+                                                    )
                                                 }
+                                                <button className="iconEraserBtn" onClick={() => handleClose(-1)}>
+                                                    <Icon className="iconEraser" path={mdiEraserVariant}/>
+                                                </button>
                                             </div>
-                                        )
-                                    }
-                                    <button className="iconEraserBtn" onClick={() => handleClose(-1)}>
-                                        <Icon className="iconEraser" path={mdiEraserVariant}/>
-                                    </button>
-                                </div>
-                            </Menu>
-                            <div className="border vertical left"/>
-                            <div className="border vertical right"/>
-                            <div className="border horizontal top"/>
-                            <div className="border horizontal bottom"/>
-                        </header>
+                                        </Menu>
+                                        <div className="border vertical left"/>
+                                        <div className="border vertical right"/>
+                                        <div className="border horizontal top"/>
+                                        <div className="border horizontal bottom"/>
+                                    </header>
+                            }
+                        </div>
                 }
             </div>
         )
