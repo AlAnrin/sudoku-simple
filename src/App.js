@@ -14,13 +14,18 @@ function App() {
     const [menuOptions] = React.useState([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
     const [rows, setRows] = React.useState(sudokuRender(3));
     const [isWin, setIsWin] = React.useState(false);
+    const [checkErrors, setCheckErr] = React.useState(false);
 
     function sudokuRender(level_id) {
         let rows = [];
-        let field = level_id < 5 ?
-            '0681594327597283416342671589934157268278936145156842973729318654813465792465729831'
-            :
-            '0937162845862754319451893267274519638615438972398276451786321594123945786549697123';
+        let field = '';
+        switch (level_id){
+            case 3: field = '0681594327597283416342671589934157268278936145156842973729318654813465792465729831';
+            break;
+            case 5: field = '0937162845862754319451893267274519638615438972398276451786321594123945786549687123';
+            break;
+            case 8: field = '0473896152518427936926351487692514378185673294347289561761945823854732619239168745';
+        }
         let arr = [1,2,3,4,6,7,5,8,9].sort(() => {return Math.random() - 0.5});
         let row = [];
         for (let i = 1; i < 82; i++) {
@@ -46,6 +51,7 @@ function App() {
     function changeLevel(level_id) {
         setSelectLevel(level_id);
         setRows(sudokuRender(level_id));
+        setCheckErr(false);
     }
 
     function handleClose(item) {
@@ -74,9 +80,13 @@ function App() {
 
     function checkWin() {
         let flag = true;
+        let errors = false;
         rows.map(row => {
-            if (unique(row).length !== row.length)
+            let uniqueRow = unique(row);
+            if (uniqueRow.length !== row.length)
                 flag = false;
+            if (uniqueRow.length !== row.filter(item => item.text !== '').length)
+                errors = true;
             return row;
         });
         for (let i = 0; i < 9; i++) {
@@ -84,10 +94,11 @@ function App() {
             for (let j = 0; j < 9; j++) {
                 col.push(rows[j][i]);
             }
-            if (unique(col).length !== col.length) {
+            let uniqueCol = unique(col);
+            if (uniqueCol.length !== col.length)
                 flag = false;
-                break;
-            }
+            if (uniqueCol.length !== col.filter(item => item.text !== '').length)
+                errors = true;
         }
         let indexes = [[0, 0], [0, 3], [0, 6], [3, 0], [3, 3], [3, 6], [6, 0], [6, 3], [6, 6]];
         let indR = 0, indC = 0;
@@ -99,16 +110,20 @@ function App() {
                     square.push(rows[i][j]);
                 }
             }
-            if (unique(square).length !== square.length) {
+            let uniqueSquare = unique(square);
+            if (uniqueSquare.length !== square.length)
                 flag = false;
-            }
+            if (uniqueSquare.length !== square.filter(item => item.text !== '').length)
+                errors = true;
         });
         if (flag) setIsWin(true);
+        setCheckErr(errors);
     }
 
     function playAgain() {
         setIsWin(false);
         setRows(sudokuRender(3));
+        setCheckErr(false);
     }
 
     function render() {
@@ -148,7 +163,9 @@ function App() {
                         </header>
                         :
                         <header className="App-header">
-                            { div }
+                            <div className={checkErrors ? 'errorTable' : 'table'}>
+                                { div }
+                            </div>
                             <Menu
                                 id="menu"
                                 anchorEl={anchorEl}

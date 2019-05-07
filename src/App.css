@@ -9,6 +9,12 @@ body {
     text-align: center;
     background-color: #92b0d3;
 }
+.table {
+    border: 1px solid lightgray;
+}
+.errorTable {
+    border: 4px solid #d31b19;
+}
 
 .levelsHeader {
     font-size: calc(10px + 2vmin);
