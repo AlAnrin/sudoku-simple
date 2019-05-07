@@ -53,6 +53,10 @@ body {
 .num_button:disabled {
     background: #5d6d80;
 }
+.selectLevelBtn {
+    background: #f28938 !important;
+    color: #224a81 !important;
+}
 .niceBtn {
     border: none;
     background: inherit;
