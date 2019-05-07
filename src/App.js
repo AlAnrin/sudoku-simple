@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Icon } from '@mdi/react';
+import {mdiEraserVariant} from '@mdi/js';
 
 function App() {
     const [selectIndexs, setSelIndexs] = React.useState([-1, -1]);
@@ -49,7 +51,7 @@ function App() {
     function handleClose(item) {
         if (item !== null) {
             let newRows = Object.assign([], rows);
-            newRows[selectIndexs[0]][selectIndexs[1]].text = item;
+            newRows[selectIndexs[0]][selectIndexs[1]].text = item !== -1 ? item : '';
             setRows(newRows);
         }
         setOpenMenu(false);
@@ -153,16 +155,21 @@ function App() {
                                 open={openMenu}
                                 onClose={() => handleClose(null)}
                             >
-                                {
-                                    menuOptions.map(row =>
-                                        <div className="row" key={row}>
-                                            {
-                                                row.map(item => <MenuItem key={item}
-                                                                          onClick={() => handleClose(item)}>{item}</MenuItem>)
-                                            }
-                                        </div>
-                                    )
-                                }
+                                <div>
+                                    {
+                                        menuOptions.map(row =>
+                                            <div className="row" key={row}>
+                                                {
+                                                    row.map(item => <MenuItem key={item}
+                                                                              onClick={() => handleClose(item)}>{item}</MenuItem>)
+                                                }
+                                            </div>
+                                        )
+                                    }
+                                    <button className="iconEraserBtn" onClick={() => handleClose(-1)}>
+                                        <Icon className="iconEraser" path={mdiEraserVariant}/>
+                                    </button>
+                                </div>
                             </Menu>
                             <div className="border vertical left"/>
                             <div className="border vertical right"/>

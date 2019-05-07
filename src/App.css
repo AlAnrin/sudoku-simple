@@ -71,6 +71,18 @@ body {
 .niceBtn:hover {
     background: #a86946;
 }
+.iconEraserBtn {
+    border: none;
+    background: inherit;
+    padding: 5px;
+    width: 100%;
+}
+.iconEraser {
+    height: 46px;
+}
+.iconEraserBtn:hover {
+    background: #7b99bc;
+}
 .border {
     background: #e19d3e;
     position: absolute;

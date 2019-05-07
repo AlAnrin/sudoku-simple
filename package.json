@@ -2,13 +2,18 @@
   "name": "sudoku",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alanrin.github.io/sudoku-simple",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@mdi/js": "^3.6.95",
+    "@mdi/react": "^1.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -28,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
