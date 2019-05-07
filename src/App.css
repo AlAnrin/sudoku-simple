@@ -1,6 +1,9 @@
 button, input, div, li, ul:focus {
     outline: 0;
 }
+body {
+    overflow: hidden;
+}
 
 .App {
     text-align: center;
@@ -48,8 +51,7 @@ button, input, div, li, ul:focus {
     background: #398ff2;
 }
 .num_button:disabled {
-    background: gray;
-    cursor: none;
+    background: #5d6d80;
 }
 .niceBtn {
     border: none;
@@ -64,7 +66,6 @@ button, input, div, li, ul:focus {
 }
 .border {
     background: black;
-    z-index: 9999;
     position: absolute;
 }
 .vertical {
