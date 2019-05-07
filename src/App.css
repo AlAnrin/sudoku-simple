@@ -7,7 +7,7 @@ body {
 
 .App {
     text-align: center;
-    background-color: #8590a5;
+    background-color: #92b0d3;
 }
 
 .levelsHeader {
@@ -15,7 +15,7 @@ body {
     color: white;
     width: 100vw;
     height: 50px;
-    background: #687080;
+    background: #5c7188;
 }
 
 .App-header {
@@ -43,19 +43,22 @@ body {
     flex-direction: row;
 }
 .num_button {
-    background: inherit;
+    background: #7b99bc;
     color: white;
+    font-size: 18px;
 }
 .num_button:hover {
     cursor: hand;
-    background: #398ff2;
+    background: #627b98;
 }
 .num_button:disabled {
-    background: #5d6d80;
+    color: white;
+    background: #485b7a;
 }
 .selectLevelBtn {
-    background: #f28938 !important;
-    color: #224a81 !important;
+    background: #f2822e !important;
+    color: #173381 !important;
+    font-weight: bold !important;
 }
 .niceBtn {
     border: none;
@@ -66,15 +69,15 @@ body {
     vertical-align: middle;
 }
 .niceBtn:hover {
-    background: #224a81;
+    background: #a86946;
 }
 .border {
-    background: black;
+    background: #e19d3e;
     position: absolute;
 }
 .vertical {
     height: 360px;
-    width: 2px;
+    width: 3px;
 }
 .left {
     margin-left: -60px;
@@ -83,7 +86,7 @@ body {
     margin-left: 60px;
 }
 .horizontal {
-    height: 2px;
+    height: 3px;
     width: 360px;
 }
 .top {

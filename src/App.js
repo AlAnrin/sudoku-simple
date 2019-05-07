@@ -36,7 +36,6 @@ function App() {
     }
 
     function handleOpen(e, indexRow, indexCell) {
-        console.log(indexCell);
         setAnchorEl(e.currentTarget);
         setOpenMenu(true);
         setSelIndexs([indexRow, indexCell]);
