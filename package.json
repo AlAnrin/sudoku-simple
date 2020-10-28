@@ -4,12 +4,12 @@
   "private": true,
   "homepage": "https://alanrin.github.io/sudoku-simple",
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
-    "@mdi/js": "^3.6.95",
-    "@mdi/react": "^1.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "@material-ui/core": "^4.11.0",
+    "@mdi/js": "^5.8.55",
+    "@mdi/react": "^1.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.0"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -35,6 +35,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^3.1.0"
   }
 }
